@@ -30,6 +30,10 @@ namespace DSAnimStudio
         private bool HasNoLODs = true;
 
         VertexBuffer VertBuffer;
+
+        private FlverShaderVertInput[] _CurrentMeshVertices;
+
+        public FlverShaderVertInput[] CurrentMeshVertices => _CurrentMeshVertices;
         //VertexBufferBinding VertBufferBinding;
 
         public string TexNameDiffuse { get; private set; } = null;
@@ -929,6 +933,7 @@ namespace DSAnimStudio
             VertBuffer = new VertexBuffer(GFX.Device,
                 typeof(FlverShaderVertInput), MeshVertices.Length, BufferUsage.WriteOnly);
             VertBuffer.SetData(MeshVertices);
+            _CurrentMeshVertices = MeshVertices;
 
             //VertBufferBinding = new VertexBufferBinding(VertBuffer, 0, 0);
 
@@ -1599,6 +1604,7 @@ namespace DSAnimStudio
             VertBuffer = new VertexBuffer(GFX.Device,
                 typeof(FlverShaderVertInput), MeshVertices.Length, BufferUsage.WriteOnly);
             VertBuffer.SetData(MeshVertices);
+            _CurrentMeshVertices = MeshVertices;
 
             //VertBufferBinding = new VertexBufferBinding(VertBuffer, 0, 0);
 
@@ -1985,6 +1991,7 @@ namespace DSAnimStudio
             MeshFacesets = null;
 
             VertBuffer.Dispose();
+            _CurrentMeshVertices = null;
 
             // Just leave the texture data as-is, since 
             // TexturePool handles memory cleanup

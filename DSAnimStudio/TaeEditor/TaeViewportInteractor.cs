@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using ImGuiNET;
 using DSAnimStudio.ImguiOSD;
 using DSAnimStudio.DebugPrimitives;
+using HKX2;
 
 namespace DSAnimStudio.TaeEditor
 {

@@ -228,7 +228,10 @@ namespace DSAnimStudio
 
                 if (a != null)
                 {
-                    SoulsAssetPipeline.AnimationExporting.AnimationExporter.ExportToFile(a, @"C:\Users\Green\OneDrive\Documents\SAP_ANIM_EXPORT_TEST.fbx", "fbx");
+                    // TODO ######: export fbx file from hkx
+                    var filePath = String.Format(@"I:\DS_export\{0}.fbx", a.Name);
+                    // var filePath = @"I:\DS_export\SAP_ANIM_EXPORT_TEST.fbx";
+                    SoulsAssetPipeline.AnimationExporting.AnimationExporter.ExportToFile(a, filePath, "fbx");
                 }
                 else
                 {
@@ -236,6 +239,17 @@ namespace DSAnimStudio
                 }
 
                 Console.WriteLine("DFSDF");
+            }
+
+            if (DebugTestButton("CUSTOM OPERATION\n\n====="))
+            {
+                System.Diagnostics.Debug.WriteLine("do custom operation");
+                var mesh = Scene.MainModel?.MainMesh;
+                if (mesh != null)
+                {
+                    var meshVertices = mesh.Submeshes[1].CurrentMeshVertices;
+                    System.Diagnostics.Trace.WriteLine("mesh = "+meshVertices);
+                }
             }
 
             ImGui.Separator();
